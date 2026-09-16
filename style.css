@@ -1,237 +1,195 @@
-:root {
-    --bg-beige: #fbf8f3;
-    --card-beige: #f4ede2;
-    --gold-primary: #c5a059;
-    --gold-dark: #9e7a37;
-    --gold-light: #e6d3a7;
-    --text-dark: #3a322b;
-    --text-muted: #6b6155;
-    --white: #ffffff;
-}
-
+/* CONFIGURACIÓN GENERAL */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
-    background-color: var(--bg-beige);
-    color: var(--text-dark);
-    font-family: 'Montserrat', sans-serif;
+    background-color: #fdfbf7;
+    color: #333333;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px 10px;
-    position: relative;
     overflow-x: hidden;
 }
 
-/* PANTALLA DE ENTRADA ANIMADA (PUERTAS) */
-.welcome-screen {
+/* PANTALLA DE BIENVENIDA (PUERTAS) */
+#welcome-screen {
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fdfbf7;
     z-index: 9999;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.doors-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-}
-
-.door {
-    width: 50%;
-    height: 100%;
-    background-color: #f4ede2;
-    background-image: radial-gradient(#c5a059 0.75px, transparent 0.75px);
-    background-size: 15px 15px;
-    border: 3px solid var(--gold-primary);
-    transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
-    z-index: 1;
-}
-
-.door-left { transform-origin: left; }
-.door-right { transform-origin: right; }
-
-.door-content {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
     text-align: center;
-    background: rgba(253, 250, 243, 0.95);
-    padding: 30px 20px;
-    border: 2px solid var(--gold-primary);
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    width: 85%;
-    max-width: 380px;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
-.welcome-subtitle {
-    font-size: 0.75rem;
-    letter-spacing: 3px;
-    color: var(--gold-dark);
+#welcome-screen.opened {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
-.welcome-title {
+.welcome-content h1 {
     font-family: 'Great Vibes', cursive;
-    font-size: 3rem;
-    color: var(--gold-dark);
-    margin: 10px 0;
+    font-size: 2.8rem;
+    color: #a38146;
+    margin: 15px 0;
 }
 
-.tap-instruction {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 15px;
-    font-style: italic;
-}
-
-.open-btn {
-    background: var(--gold-primary);
+#open-btn {
+    background-color: #d4af37;
     color: white;
     border: none;
     padding: 12px 25px;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-radius: 25px;
     cursor: pointer;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4);
-    transition: transform 0.2s ease;
-}
-
-.open-btn:hover { transform: scale(1.05); }
-
-/* Abrir Puertas */
-.welcome-screen.opened .door-left { transform: translateX(-100%); }
-.welcome-screen.opened .door-right { transform: translateX(100%); }
-.welcome-screen.opened .door-content { opacity: 0; pointer-events: none; }
-.welcome-screen.opened { pointer-events: none; }
-
-/* REPRODUCTOR DE MÚSICA */
-.music-toggle {
-    position: fixed;
-    top: 20px; right: 20px;
-    width: 45px; height: 45px;
-    border-radius: 50%;
-    background: var(--gold-primary);
-    color: white;
-    border: none;
-    cursor: pointer;
-    z-index: 100;
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    display: flex; justify-content: center; align-items: center;
-    font-size: 1.2rem;
+    transition: transform 0.2s;
 }
 
-.music-toggle.playing { animation: pulse 1.5s infinite; }
+#open-btn:active {
+    transform: scale(0.95);
+}
 
-/* FOTO DE LOS NOVIOS */
+/* CONTENEDOR PRINCIPAL */
+.main-content {
+    width: 100%;
+    max-width: 480px;
+    padding: 20px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* FOTO DE LOS NOVIOS Y BORDES */
 .photo-frame {
     width: 100%;
     max-width: 320px;
-    height: 380px;
-    margin: 0 auto;
-    border: 3px solid var(--gold-primary);
+    margin: 20px auto;
+    border: 2px solid #d4af37;
     border-radius: 15px;
     padding: 8px;
-    background: var(--white);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    background: #ffffff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
 .photo-frame img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     border-radius: 10px;
+    display: block;
 }
 
-/* ESTILOS DE LA TARJETA */
-.card-container {
-    max-width: 500px; width: 100%;
-    background-color: var(--card-beige);
-    border: 2px solid var(--gold-light);
-    border-radius: 15px;
-    padding: 40px 25px;
-    text-align: center;
-    box-shadow: 0 15px 35px rgba(158, 122, 55, 0.12);
-}
-
-.section { margin-bottom: 35px; }
-.subtitle { font-size: 0.85rem; letter-spacing: 4px; color: var(--gold-dark); text-transform: uppercase; }
-.names { font-family: 'Great Vibes', cursive; font-size: 3.8rem; color: var(--gold-dark); margin: 10px 0; font-weight: normal; }
-.ampersand { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--gold-primary); font-style: italic; }
-.gold-divider { color: var(--gold-primary); font-size: 1rem; margin: 15px 0; }
-.date-header { font-size: 0.95rem; letter-spacing: 2px; color: var(--text-muted); }
-
-.countdown-section h2 { font-family: 'Cormorant Garamond', serif; color: var(--gold-dark); font-size: 1.3rem; letter-spacing: 2px; margin-bottom: 15px; }
-.timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-.time-box { background: var(--white); border: 1px solid var(--gold-light); padding: 10px 5px; border-radius: 8px; }
-.time-box span { display: block; font-size: 1.5rem; font-weight: 600; color: var(--gold-dark); }
-.time-box small { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; }
-
-.main-text { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; line-height: 1.7; color: var(--text-dark); margin-bottom: 15px; }
-.gold-box { background: #fffdf9; border: 1px solid var(--gold-primary); border-radius: 10px; padding: 20px; margin-bottom: 15px; }
-.gold-icon { font-size: 1.5rem; color: var(--gold-primary); margin-bottom: 10px; }
-.gold-box p { font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); }
-.highlight-text { font-family: 'Great Vibes', cursive; font-size: 2rem; color: var(--gold-dark); margin-top: 10px; }
-
-.btn { display: block; width: 100%; padding: 14px; margin-bottom: 12px; border-radius: 25px; text-decoration: none; font-size: 0.9rem; font-weight: 500; letter-spacing: 1px; transition: all 0.3s ease; }
-.btn-whatsapp { background-color: var(--gold-primary); color: var(--white); box-shadow: 0 4px 12px rgba(197, 160, 89, 0.3); }
-.btn-whatsapp:hover { background-color: var(--gold-dark); }
-.btn-location { background-color: transparent; color: var(--gold-dark); border: 1px solid var(--gold-primary); }
-.btn-location:hover { background-color: var(--gold-light); }
-
-.footer { margin-top: 20px; font-size: 0.8rem; color: var(--gold-primary); letter-spacing: 2px; }
-
-.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-
-@keyframes pulse { 
-    0% { transform: scale(1); } 
-    50% { transform: scale(1.1); } 
-    100% { transform: scale(1); } 
-}
-
-/* Color dorado para los corazones */
+/* CORAZONES DORADOS */
 .gold-heart {
-    color: #d4af37;
+    color: #d4af37 !important;
     font-size: 0.9em;
     margin: 0 4px;
 }
 
-/* Texto espiritual debajo de la foto */
+/* TEXTO ESPIRITUAL BAJO LA FOTO */
 .spiritual-text {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     line-height: 1.6;
     color: #555555;
     font-style: italic;
-    max-width: 500px;
-    margin: 15px auto;
-    padding: 0 15px;
+    margin: 20px 0;
+    padding: 0 10px;
 }
 
-/* Subtítulo Nos casamos por amor */
+.couple-names {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    color: #333333;
+    margin-top: 10px;
+}
+
 .love-subtitle {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     letter-spacing: 2px;
-    color: #666666;
+    color: #777777;
     font-weight: 600;
-    margin-top: 5px;
+    margin-bottom: 25px;
 }
 
-/* Frase sobre la fecha */
 .date-phrase {
     font-family: 'Great Vibes', cursive;
-    font-size: 1.8rem;
-    color: #333333;
-    margin: 20px 0 10px 0;
+    font-size: 2rem;
+    color: #a38146;
+    margin: 15px 0;
+}
+
+/* CONTADOR REGRESIVO */
+#timer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.time-box {
+    background: #ffffff;
+    border: 1px solid #e2d1a6;
+    border-radius: 10px;
+    padding: 10px;
+    min-width: 65px;
+}
+
+.time-box span {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #a38146;
+}
+
+.time-box p {
+    font-size: 0.75rem;
+    color: #666666;
+}
+
+/* BOTONES */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.btn-whatsapp {
+    background-color: #d4af37;
+    color: white;
+}
+
+.btn-maps {
+    background-color: transparent;
+    color: #666666;
+    border: 1px solid #cccccc;
+}
+
+/* BOTÓN FLOTANTE MÚSICA */
+.music-floating {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: #d4af37;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
