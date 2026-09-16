@@ -3,118 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestra Boda - Yuly & Carlos</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Boda Yuly & Carlos</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- PANTALLA DE ENTRADA (SOBRE / PUERTA ANIMADA) -->
-    <div id="welcome-screen" class="welcome-screen">
-        <div class="doors-container">
-            <div class="door door-left"></div>
-            <div class="door door-right"></div>
-            <div class="door-content">
-                <span class="welcome-subtitle">ESTÁS INVITADO A LA BODA DE</span>
-                <h1 class="welcome-title">Yuly & Carlos</h1>
-                <p class="tap-instruction">Toca para abrir la invitación</p>
-                <button id="open-btn" class="open-btn">
-                    <i class="fas fa-envelope-open"></i> Abrir Invitación
-                </button>
-            </div>
+    <!-- PANTALLA DE BIENVENIDA (PUERTAS) -->
+    <div id="welcome-screen">
+        <div class="door door-left"></div>
+        <div class="door door-right"></div>
+        <div class="welcome-content">
+            <p class="sub-title">NUESTRA BODA</p>
+            <h1>Yuly & Carlos</h1>
+            <button id="open-btn"><i class="fas fa-envelope-open"></i> Abrir Invitación</button>
         </div>
     </div>
 
-    <!-- Música de Fondo (Se reproduce al hacer clic en Abrir) -->
+    <!-- BOTÓN FLOTANTE MÚSICA -->
+    <button id="music-btn" class="music-floating"><i class="fas fa-music"></i></button>
     <audio id="bg-music" loop preload="auto">
         <source src="musica.mp3" type="audio/mpeg">
     </audio>
 
-    <button id="music-btn" class="music-toggle" aria-label="Reproducir música">
-        <i class="fas fa-music"></i>
-    </button>
-
-    <!-- TARJETA PRINCIPAL -->
-    <div class="card-container">
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
         
-        <header class="section header-section fade-in">
-            <span class="subtitle">NUESTRA BODA</span>
-            <h1 class="names">Yuly <span class="ampersand">&</span> Carlos</h1>
-            <div class="gold-divider">♦</div>
-            <p class="date-header">10 DE NOVIEMBRE DE 2026</p>
+        <header class="header fade-in">
+            <p class="top-subtitle"><span class="gold-heart">♥</span> NUESTRO <span class="gold-heart">♥</span></p>
+            <h1 class="main-title">Matrimonio Civil</h1>
         </header>
 
         <!-- FOTO DE LOS NOVIOS -->
-        <section class="section photo-section fade-in">
+        <section class="photo-section fade-in">
             <div class="photo-frame">
-                <!-- Se mostrará novios.jpg cuando subas la foto -->
-                <img src="novios.jpg" alt="Yuly y Carlos" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80'">
+                <img src="novios.jpg" alt="Yuly y Carlos">
             </div>
         </section>
 
-        <!-- Contador Regresivo -->
-        <section class="section countdown-section fade-in">
-            <h2>FALTAN POCOS DÍAS</h2>
-            <div id="timer" class="timer-grid">
-                <div class="time-box"><span id="days">00</span><small>Días</small></div>
-                <div class="time-box"><span id="hours">00</span><small>Horas</small></div>
-                <div class="time-box"><span id="minutes">00</span><small>Minutos</small></div>
-                <div class="time-box"><span id="seconds">00</span><small>Segundos</small></div>
-            </div>
-        </section>
-
-        <!-- Mensaje Principal -->
-        <section class="section message-section fade-in">
-            <p class="main-text">
-                Con inmensa alegría, nosotros, <strong>Yuly y Carlos</strong>, queremos invitarte a celebrar nuestra unión matrimonial. La boda se celebrará el <strong>10 de noviembre del 2026 a las 3 p.m.</strong>
+        <!-- TEXTO ESPIRITUAL BAJO LA IMAGEN Y FRASES DE LOS NOVIOS -->
+        <section class="phrase-section fade-in">
+            <p class="spiritual-text">
+                Dios hizo posible que nos encontráramos y decidió unir nuestra historia en una sola. 
+                Hoy celebramos el verdadero y más puro amor que hemos construido y decidido cuidar, 
+                proteger y compartir por el resto de nuestras vidas, con Jesús como centro de nuestro matrimonio.
             </p>
-            <p class="main-text">
-                Para nosotros es muy especial compartir este día rodeados de nuestro círculo más cercano en una reunión íntima en nuestra casa.
-            </p>
+            <h2 class="couple-names">Yuly & Carlos</h2>
+            <p class="love-subtitle"><span class="gold-heart">♥</span> NOS CASAMOS POR AMOR <span class="gold-heart">♥</span></p>
         </section>
 
-        <!-- Nota Especial -->
-        <section class="section note-section fade-in">
-            <div class="gold-box">
-                <i class="fas fa-user-friends gold-icon"></i>
-                <p>
-                    Como nuestro espacio es limited y queremos que todos disfrutemos al máximo, hemos decidido que sea una celebración <strong>solo para adultos</strong> y exclusiva para las personas que aparecen nombradas en la invitación.
-                </p>
-            </div>
-            <p class="highlight-text">¡Nos encantaría contar con tu presencia!</p>
+        <!-- DETALLE DE LA FECHA Y "UN SÍ QUE CAMBIA TODO" -->
+        <section class="date-phrase-section fade-in">
+            <p class="date-phrase">Un sí que cambia todo <span class="gold-heart">♥</span></p>
         </section>
 
-        <!-- Sección de Regalos (Reemplaza la Lluvia de Sobres) -->
-        <section class="section gift-section fade-in">
-            <div class="gold-box">
-                <i class="fas fa-gift gold-icon"></i>
-                <p>
-                    Tu presencia es lo más importante para nosotros; si deseas obsequiarnos algo, lo que tu corazón elija será bienvenido con mucho cariño.
-                </p>
+        <!-- CONTADOR REGRESIVO -->
+        <section class="countdown-section fade-in">
+            <h2>10 DE NOVIEMBRE DE 2026</h2>
+            <p class="time-detail">3:00 PM • En punto</p>
+            <div id="timer">
+                <div class="time-box"><span id="days">00</span><p>Días</p></div>
+                <div class="time-box"><span id="hours">00</span><p>Horas</p></div>
+                <div class="time-box"><span id="minutes">00</span><p>Min</p></div>
+                <div class="time-box"><span id="seconds">00</span><p>Seg</p></div>
             </div>
         </section>
 
-        <!-- Botones Interactivos -->
-        <section class="section rsvp-section fade-in">
-            <!-- CAMBIA EL 573000000000 POR EL NÚMERO DE WHATSAPP REAL -->
-            <a href="https://wa.me/573000000000?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Yuly%20y%20Carlos." class="btn btn-whatsapp" target="_blank">
+        <!-- REGALOS -->
+        <section class="gifts-section fade-in">
+            <div class="gift-card">
+                <i class="fas fa-gift gift-icon"></i>
+                <h3>Sugerencia de Regalos</h3>
+                <p>El mejor regalo es tu presencia en este día tan especial. Si deseas realizarnos un detalle, aceptamos sugerencias de regalos.</p>
+            </div>
+        </section>
+
+        <!-- BOTONES DE INTERACCIÓN -->
+        <section class="buttons-section fade-in">
+            <a href="https://wa.me/573019331094?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Yuly%20y%20Carlos." class="btn btn-whatsapp" target="_blank">
                 <i class="fab fa-whatsapp"></i> Confirmar Asistencia
             </a>
-
-            <!-- PEGA AQUÍ EL LINK DE GOOGLE MAPS DE LA CASA -->
-            <a href="https://maps.google.com" class="btn btn-location" target="_blank">
+            <a href="https://maps.google.com" class="btn btn-maps" target="_blank">
                 <i class="fas fa-map-marker-alt"></i> Ver Ubicación
             </a>
         </section>
 
-        <footer class="footer">
-            <p>Yuly & Carlos • 2026</p>
-        </footer>
+        <!-- RESTRICCIÓN DE NIÑOS -->
+        <section class="adults-only-section fade-in">
+            <div class="adults-card">
+                <i class="fas fa-glass-cheers icon-adults"></i>
+                <p><strong>Evento exclusivo para adultos</strong></p>
+                <small>Agradecemos tu comprensión al no asistir con niños.</small>
+            </div>
+        </section>
 
-    </div>
+    </main>
 
     <script src="script.js"></script>
 </body>
