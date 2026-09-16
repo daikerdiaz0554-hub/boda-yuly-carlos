@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Boda - Yuly & Carlos</title>
+    <!-- Fuentes elegantes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+    <!-- Iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Música de Fondo -->
+    <audio id="bg-music" loop>
+        <!-- Reemplaza con el enlace a tu canción favorita en MP3 -->
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="music-btn" class="music-toggle" aria-label="Reproducir música">
+        <i class="fas fa-music"></i>
+    </button>
+
+    <!-- Partículas Doradas de Fondo -->
+    <div id="particles"></div>
+
+    <div class="card-container">
+        
+        <!-- Portada -->
+        <header class="section header-section fade-in">
+            <span class="subtitle">NUESTRA BODA</span>
+            <h1 class="names">Yuly <span class="ampersand">&</span> Carlos</h1>
+            <div class="gold-divider">♦</div>
+            <p class="date-header">10 DE NOVIEMBRE DE 2026</p>
+        </header>
+
+        <!-- Contador Regresivo -->
+        <section class="section countdown-section fade-in">
+            <h2>FALTAN POCOS DÍAS</h2>
+            <div id="timer" class="timer-grid">
+                <div class="time-box"><span id="days">00</span><small>Días</small></div>
+                <div class="time-box"><span id="hours">00</span><small>Horas</small></div>
+                <div class="time-box"><span id="minutes">00</span><small>Minutos</small></div>
+                <div class="time-box"><span id="seconds">00</span><small>Segundos</small></div>
+            </div>
+        </section>
+
+        <!-- Mensaje Principal -->
+        <section class="section message-section fade-in">
+            <p class="main-text">
+                Con inmensa alegría, nosotros, <strong>Yuly y Carlos</strong>, queremos invitarte a celebrar nuestra unión matrimonial. La boda se celebrará el <strong>10 de noviembre del 2026 a las 3 p.m.</strong>
+            </p>
+            <p class="main-text">
+                Para nosotros es muy especial compartir este día rodeados de nuestro círculo más cercano en una reunión íntima en nuestra casa.
+            </p>
+        </section>
+
+        <!-- Cuadro Nota Especial -->
+        <section class="section note-section fade-in">
+            <div class="gold-box">
+                <i class="fas fa-user-friends gold-icon"></i>
+                <p>
+                    Como nuestro espacio es limitado y queremos que todos disfrutemos al máximo, hemos decidido que sea una celebración <strong>solo para adultos</strong> y exclusiva para las personas que aparecen nombradas en la invitación.
+                </p>
+            </div>
+            <p class="highlight-text">¡Nos encantaría contar con tu presencia!</p>
+        </section>
+
+        <!-- Lluvia de Sobres -->
+        <section class="section gift-section fade-in">
+            <div class="envelope-icon">✉️</div>
+            <h3>Lluvia de Sobres</h3>
+            <p>
+                Tu compañía es nuestro mejor regalo, pero si deseas hacernos un detalle, la lluvia de sobres será bienvenida. 🤗
+            </p>
+        </section>
+
+        <!-- Botones de Acción (RSVP / Ubicación) -->
+        <section class="section rsvp-section fade-in">
+            <!-- Reemplaza el número de WhatsApp con el de tus papás (código de país + número) -->
+            <a href="https://wa.me/573000000000?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Yuly%20y%20Carlos." class="btn btn-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i> Confirmar Asistencia
+            </a>
+
+            <!-- Agrega aquí el enlace a Google Maps de la casa -->
+            <a href="https://maps.google.com" class="btn btn-location" target="_blank">
+                <i class="fas fa-map-marker-alt"></i> Ver Ubicación
+            </a>
+        </section>
+
+        <footer class="footer">
+            <p>Yuly & Carlos • 2026</p>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
