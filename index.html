@@ -4,19 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nuestra Boda - Yuly & Carlos</title>
-    <!-- Fuentes elegantes de Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
-    <!-- Iconos FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Música de Fondo -->
-    <audio id="bg-music" loop>
-        <!-- Reemplaza con el enlace a tu canción favorita en MP3 -->
+    <!-- PANTALLA DE ENTRADA (SOBRE / PUERTA ANIMADA) -->
+    <div id="welcome-screen" class="welcome-screen">
+        <div class="doors-container">
+            <div class="door door-left"></div>
+            <div class="door door-right"></div>
+            <div class="door-content">
+                <span class="welcome-subtitle">ESTÁS INVITADO A LA BODA DE</span>
+                <h1 class="welcome-title">Yuly & Carlos</h1>
+                <p class="tap-instruction">Toca para abrir la invitación</p>
+                <button id="open-btn" class="open-btn">
+                    <i class="fas fa-envelope-open"></i> Abrir Invitación
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Música de Fondo (Se reproduce al hacer clic en Abrir) -->
+    <audio id="bg-music" loop preload="auto">
         <source src="musica.mp3" type="audio/mpeg">
     </audio>
 
@@ -24,18 +37,23 @@
         <i class="fas fa-music"></i>
     </button>
 
-    <!-- Partículas Doradas de Fondo -->
-    <div id="particles"></div>
-
+    <!-- TARJETA PRINCIPAL -->
     <div class="card-container">
         
-        <!-- Portada -->
         <header class="section header-section fade-in">
             <span class="subtitle">NUESTRA BODA</span>
             <h1 class="names">Yuly <span class="ampersand">&</span> Carlos</h1>
             <div class="gold-divider">♦</div>
             <p class="date-header">10 DE NOVIEMBRE DE 2026</p>
         </header>
+
+        <!-- FOTO DE LOS NOVIOS -->
+        <section class="section photo-section fade-in">
+            <div class="photo-frame">
+                <!-- Se mostrará novios.jpg cuando subas la foto -->
+                <img src="novios.jpg" alt="Yuly y Carlos" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80'">
+            </div>
+        </section>
 
         <!-- Contador Regresivo -->
         <section class="section countdown-section fade-in">
@@ -58,35 +76,36 @@
             </p>
         </section>
 
-        <!-- Cuadro Nota Especial -->
+        <!-- Nota Especial -->
         <section class="section note-section fade-in">
             <div class="gold-box">
                 <i class="fas fa-user-friends gold-icon"></i>
                 <p>
-                    Como nuestro espacio es limitado y queremos que todos disfrutemos al máximo, hemos decidido que sea una celebración <strong>solo para adultos</strong> y exclusiva para las personas que aparecen nombradas en la invitación.
+                    Como nuestro espacio es limited y queremos que todos disfrutemos al máximo, hemos decidido que sea una celebración <strong>solo para adultos</strong> y exclusiva para las personas que aparecen nombradas en la invitación.
                 </p>
             </div>
             <p class="highlight-text">¡Nos encantaría contar con tu presencia!</p>
         </section>
 
-        <!-- Lluvia de Sobres -->
+        <!-- Sección de Regalos (Reemplaza la Lluvia de Sobres) -->
         <section class="section gift-section fade-in">
-            <div class="envelope-icon">✉️</div>
-            <h3>Lluvia de Sobres</h3>
-            <p>
-                Tu compañía es nuestro mejor regalo, pero si deseas hacernos un detalle, la lluvia de sobres será bienvenida. 🤗
-            </p>
+            <div class="gold-box">
+                <i class="fas fa-gift gold-icon"></i>
+                <p>
+                    Tu presencia es lo más importante para nosotros; si deseas obsequiarnos algo, lo que tu corazón elija será bienvenido con mucho cariño.
+                </p>
+            </div>
         </section>
 
-        <!-- Botones de Acción (RSVP / Ubicación) -->
+        <!-- Botones Interactivos -->
         <section class="section rsvp-section fade-in">
-            <!-- Reemplaza el número de WhatsApp con el de tus papás (código de país + número) -->
+            <!-- CAMBIA EL 573019331094 POR EL NÚMERO DE WHATSAPP REAL -->
             <a href="https://wa.me/573000000000?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Yuly%20y%20Carlos." class="btn btn-whatsapp" target="_blank">
                 <i class="fab fa-whatsapp"></i> Confirmar Asistencia
             </a>
 
-            <!-- Agrega aquí el enlace a Google Maps de la casa -->
-            <a href="https://maps.google.com" class="btn btn-location" target="_blank">
+            <!-- PEGA AQUÍ EL LINK DE GOOGLE MAPS DE LA CASA -->
+            <a href=https://maps.app.goo.gl/zZ17diitMomEtM3C9 class="btn btn-location" target="_blank">
                 <i class="fas fa-map-marker-alt"></i> Ver Ubicación
             </a>
         </section>
