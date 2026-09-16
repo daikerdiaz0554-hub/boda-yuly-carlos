@@ -196,3 +196,38 @@ body {
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
 @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+/* Color dorado para los corazones */
+.gold-heart {
+    color: #d4af37;
+    font-size: 0.9em;
+    margin: 0 4px;
+}
+
+/* Texto espiritual debajo de la foto */
+.spiritual-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555555;
+    font-style: italic;
+    max-width: 500px;
+    margin: 15px auto;
+    padding: 0 15px;
+}
+
+/* Subtítulo Nos casamos por amor */
+.love-subtitle {
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    color: #666666;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+/* Frase sobre la fecha */
+.date-phrase {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.8rem;
+    color: #333333;
+    margin: 20px 0 10px 0;
+}
