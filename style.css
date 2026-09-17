@@ -1,119 +1,248 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boda Yuly & Carlos</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<body>
+/* CONFIGURACIÓN GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
 
-    <!-- PANTALLA DE BIENVENIDA (SIN FOTO) -->
-    <div id="welcome-screen">
-        <div class="floral floral-top-left"></div>
-        <div class="floral floral-top-right"></div>
-        <div class="floral floral-bottom-left"></div>
-        <div class="floral floral-bottom-right"></div>
+body {
+    background-color: #fdfbf7;
+    color: #333333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
 
-        <div class="welcome-content">
-            <p class="sub-title"><span class="gold-heart">♥</span> ESTÁS INVITADO A NUESTRA BODA <span class="gold-heart">♥</span></p>
-            <h1>Yuly & Carlos</h1>
-            <p class="instruction">Toca para abrir la invitación</p>
-            <button id="open-btn"><i class="fas fa-envelope-open"></i> Abrir Invitación</button>
-        </div>
-    </div>
+/* PANTALLA DE BIENVENIDA */
+#welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fdfbf7;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
 
-    <!-- BOTÓN FLOTANTE MÚSICA -->
-    <button id="music-btn" class="music-floating"><i class="fas fa-music"></i></button>
-    <audio id="bg-music" loop preload="auto">
-        <source src="musica.mp3" type="audio/mpeg">
-    </audio>
+#welcome-screen.opened {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="main-content">
-        
-        <header class="header fade-in">
-            <p class="top-subtitle"><span class="gold-heart">♥</span> NUESTRO <span class="gold-heart">♥</span></p>
-            <h1 class="main-title">Matrimonio Civil</h1>
-        </header>
+.welcome-content {
+    padding: 20px;
+    z-index: 2;
+}
 
-        <!-- FOTO DE LOS NOVIOS (ÚNICO LUGAR DONDE APARECE) -->
-        <section class="photo-section fade-in">
-            <div class="photo-frame">
-                <img src="novios.jpg" alt="Yuly y Carlos">
-            </div>
-        </section>
+.welcome-content .sub-title {
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    color: #666666;
+    margin-bottom: 10px;
+}
 
-        <!-- TEXTO ESPIRITUAL BAJO LA IMAGEN -->
-        <section class="phrase-section fade-in">
-            <p class="spiritual-text">
-                Dios hizo posible que nos encontráramos y decidió unir nuestra historia en una sola. 
-                Hoy celebramos el verdadero y más puro amor que hemos construido y decidido cuidar, 
-                proteger y compartir por el resto de nuestras vidas, con Jesús como centro de nuestro matrimonio.
-            </p>
-            <h2 class="couple-names">Yuly & Carlos</h2>
-            <p class="love-subtitle"><span class="gold-heart">♥</span> NOS CASAMOS POR AMOR <span class="gold-heart">♥</span></p>
-        </section>
+.welcome-content h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.2rem;
+    color: #a38146;
+    margin: 10px 0 20px 0;
+}
 
-        <!-- DETALLE DE LA FECHA -->
-        <section class="date-phrase-section fade-in">
-            <p class="date-phrase">Un sí que cambia todo <span class="gold-heart">♥</span></p>
-        </section>
+.welcome-content .instruction {
+    font-size: 0.9rem;
+    color: #888888;
+    margin-bottom: 15px;
+}
 
-        <!-- CONTADOR REGRESIVO -->
-        <section class="countdown-section fade-in">
-            <h2>10 DE NOVIEMBRE DE 2026</h2>
-            <p class="time-detail">3:00 PM • En punto</p>
-            <div id="timer">
-                <div class="time-box"><span id="days">00</span><p>Días</p></div>
-                <div class="time-box"><span id="hours">00</span><p>Horas</p></div>
-                <div class="time-box"><span id="minutes">00</span><p>Min</p></div>
-                <div class="time-box"><span id="seconds">00</span><p>Seg</p></div>
-            </div>
-        </section>
+#open-btn {
+    background-color: #d4af37;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    font-size: 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    transition: transform 0.2s;
+}
 
-        <!-- REGALOS -->
-        <section class="gifts-section fade-in">
-            <div class="gift-card">
-                <i class="fas fa-gift gift-icon"></i>
-                <h3>Sugerencia de Regalos</h3>
-                <p>El mejor regalo es tu presencia en este día tan especial. Si deseas realizarnos un detalle, aceptamos sugerencias de regalos.</p>
-            </div>
-        </section>
+#open-btn:active {
+    transform: scale(0.95);
+}
 
-        <!-- CÓDIGO DE VESTIMENTA -->
-        <section class="dresscode-section fade-in">
-            <div class="dresscode-card">
-                <i class="fas fa-user-tie dresscode-icon"></i>
-                <h3>Código de Vestimenta</h3>
-                <p><strong>Semi-formal</strong></p>
-                <small>Te pedimos amablemente que el color blanco esté reservado exclusivamente para la novia.</small>
-            </div>
-        </section>
+/* FLORES EN LAS ESQUINAS DE LA PORTADA */
+.floral {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background-image: url('https://png.pngtree.com/png-clipart/20220909/ourmid/pngtree-watercolor-blue-flower-corner-wedding-invitation-frame-png-image_6143491.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 1;
+}
 
-        <!-- BOTONES DE INTERACCIÓN -->
-        <section class="buttons-section fade-in">
-            <a href="https://wa.me/573000000000?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Yuly%20y%20Carlos." class="btn btn-whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i> Confirmar Asistencia
-            </a>
-            <a href="https://maps.google.com" class="btn btn-maps" target="_blank">
-                <i class="fas fa-map-marker-alt"></i> Ver Ubicación
-            </a>
-        </section>
+.floral-top-left { top: 0; left: 0; }
+.floral-top-right { top: 0; right: 0; transform: scaleX(-1); }
+.floral-bottom-left { bottom: 0; left: 0; transform: scaleY(-1); }
+.floral-bottom-right { bottom: 0; right: 0; transform: scale(-1); }
 
-        <!-- RESTRICCIÓN DE NIÑOS -->
-        <section class="adults-only-section fade-in">
-            <div class="adults-card">
-                <i class="fas fa-glass-cheers icon-adults"></i>
-                <p><strong>Evento exclusivo para adultos</strong></p>
-                <small>Agradecemos tu comprensión al no asistir con niños.</small>
-            </div>
-        </section>
+/* CONTENEDOR PRINCIPAL */
+.main-content {
+    width: 100%;
+    max-width: 480px;
+    padding: 20px;
+    text-align: center;
+    margin: 0 auto;
+}
 
-    </main>
+/* MARCO Y TAMAÑO DE LA FOTO EN EL SEGUNDO APARTADO */
+.photo-frame {
+    width: 100%;
+    max-width: 300px;
+    height: 350px;
+    margin: 20px auto;
+    border: 2px solid #d4af37;
+    border-radius: 15px;
+    padding: 6px;
+    background: #ffffff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+}
+
+/* CORAZONES DORADOS */
+.gold-heart {
+    color: #d4af37 !important;
+    font-size: 0.9em;
+    margin: 0 4px;
+}
+
+/* TEXTO ESPIRITUAL Y FRASES */
+.spiritual-text {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: #555555;
+    font-style: italic;
+    margin: 20px 0;
+    padding: 0 10px;
+}
+
+.couple-names {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    color: #333333;
+    margin-top: 10px;
+}
+
+.love-subtitle {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: #777777;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.date-phrase {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+    color: #a38146;
+    margin: 15px 0;
+}
+
+/* CONTADOR REGRESIVO */
+#timer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.time-box {
+    background: #ffffff;
+    border: 1px solid #e2d1a6;
+    border-radius: 10px;
+    padding: 10px;
+    min-width: 65px;
+}
+
+.time-box span {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #a38146;
+}
+
+.time-box p {
+    font-size: 0.75rem;
+    color: #666666;
+}
+
+/* TARJETAS SECCIONALES (REGALOS, VESTIMENTA, ADULTOS) */
+.gift-card, .dresscode-card, .adults-card {
+    background: #ffffff;
+    border: 1px solid #e2d1a6;
+    border-radius: 12px;
+    padding: 18px 15px;
+    margin: 15px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.gift-icon, .dresscode-icon, .icon-adults {
+    font-size: 1.5rem;
+    color: #a38146;
+    margin-bottom: 8px;
+}
+
+/* BOTONES DE ACCIÓN */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.btn-whatsapp {
+    background-color: #d4af37;
+    color: white;
+}
+
+.btn-maps {
+    background-color: transparent;
+    color: #666666;
+    border: 1px solid #cccccc;
+}
+
+/* BOTÓN FLOTANTE MÚSICA */
+.music-floating {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: #d4af37;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
