@@ -1,60 +1,65 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const welcomeOverlay = document.getElementById('welcomeOverlay');
-    const btnOpenInvitation = document.getElementById('btnOpenInvitation');
-    const bgMusic = document.getElementById('bgMusic');
-    const btnMusicToggle = document.getElementById('btnMusicToggle');
-    const btnMap = document.getElementById('btnMap');
-    const btnRsvp = document.getElementById('btnRsvp');
+document.addEventListener("DOMContentLoaded", () => {
+    const welcomeScreen = document.getElementById("welcome-screen");
+    const openBtn = document.getElementById("open-btn");
+    const bgMusic = document.getElementById("bg-music");
+    const musicBtn = document.getElementById("music-btn");
 
-    // Apertura de Invitación y reproducción de música
-    if (btnOpenInvitation) {
-        btnOpenInvitation.addEventListener('click', () => {
-            // Ocultar portada
-            if (welcomeOverlay) {
-                welcomeOverlay.classList.add('hidden');
-            }
+    // LÓGICA PARA ABRIR LA INVITACIÓN
+    if (openBtn && welcomeScreen) {
+        openBtn.addEventListener("click", () => {
+            // Oculta la pantalla de bienvenida con animación
+            welcomeScreen.classList.add("opened");
 
-            // Iniciar música
+            // Reproduce la música de fondo
             if (bgMusic) {
                 bgMusic.play().then(() => {
-                    if (btnMusicToggle) btnMusicToggle.classList.remove('hidden');
-                }).catch(err => {
-                    console.log("Error al reproducir audio:", err);
-                    if (btnMusicToggle) btnMusicToggle.classList.remove('hidden');
+                    if (musicBtn) musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                }).catch((error) => {
+                    console.log("Reproducción automática bloqueada por el navegador:", error);
                 });
             }
         });
     }
 
-    // Toggle de Música (Pausar / Reproducir)
-    if (btnMusicToggle && bgMusic) {
-        btnMusicToggle.addEventListener('click', () => {
+    // CONTROL DEL BOTÓN FLOTANTE DE MÚSICA
+    if (musicBtn && bgMusic) {
+        musicBtn.addEventListener("click", () => {
             if (bgMusic.paused) {
                 bgMusic.play();
-                btnMusicToggle.textContent = '🎵';
+                musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
             } else {
                 bgMusic.pause();
-                btnMusicToggle.textContent = '🔇';
+                musicBtn.innerHTML = '<i class="fas fa-music"></i>';
             }
         });
     }
 
-    // Botón Ubicación (Google Maps)
-    if (btnMap) {
-        btnMap.addEventListener('click', () => {
-            const address = "Calle 97 # 73B - 34, Piso 3, Medellin, Colombia";
-            const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
-            window.open(mapUrl, '_blank');
-        });
+    // CONTADOR REGRESIVO PARA EL 10 DE NOVIEMBRE DE 2026 A LAS 3:00 PM
+    const targetDate = new Date("November 10, 2026 15:00:00").getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const difference = targetDate - now;
+
+        if (difference > 0) {
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            const daysElem = document.getElementById("days");
+            const hoursElem = document.getElementById("hours");
+            const minutesElem = document.getElementById("minutes");
+            const secondsElem = document.getElementById("seconds");
+
+            if (daysElem) daysElem.innerText = days < 10 ? "0" + days : days;
+            if (hoursElem) hoursElem.innerText = hours < 10 ? "0" + hours : hours;
+            if (minutesElem) minutesElem.innerText = minutes < 10 ? "0" + minutes : minutes;
+            if (secondsElem) secondsElem.innerText = seconds < 10 ? "0" + seconds : seconds;
+        }
     }
 
-    // Botón RSVP a WhatsApp
-    if (btnRsvp) {
-        btnRsvp.addEventListener('click', () => {
-            const phoneNumber = "573019331094";
-            const message = "¡Hola! Confirmamos nuestra asistencia a la boda de Yuly y Carlos ✨";
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-        });
-    }
+    // Actualiza el contador cada segundo
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
 });
