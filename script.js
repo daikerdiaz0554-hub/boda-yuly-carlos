@@ -1,73 +1,80 @@
-document.addEventListener('DOMContentLoaded', () => {
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Boda - Yuly & Carlos</title>
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Archivo de Estilos Externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    const openBtn = document.getElementById('open-btn');
-    const welcomeScreen = document.getElementById('welcome-screen');
-    const bgMusic = document.getElementById('bg-music');
-    const musicBtn = document.getElementById('music-btn');
-    let isPlaying = false;
+    <div class="container fade-in">
+        <!-- Encabezado -->
+        <div class="header-title">¡Nos casamos!</div>
+        <div class="names">Yuly & Carlos</div>
 
-    // ANIMACIÓN DE ABRIR PUERTA + REPRODUCIR MÚSICA
-    openBtn.addEventListener('click', () => {
-        welcomeScreen.classList.add('opened');
-        
-        // Reproducir música al abrir
-        bgMusic.play().then(() => {
-            isPlaying = true;
-            musicBtn.classList.add('playing');
-            musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
-        }).catch(err => {
-            console.log("Auto-play de audio bloqueado por el navegador:", err);
-        });
-    });
+        <div class="divider">✦</div>
 
-    // BOTÓN DE MÚSICA MANUAL
-    musicBtn.addEventListener('click', () => {
-        if (isPlaying) {
-            bgMusic.pause();
-            musicBtn.classList.remove('playing');
-            musicBtn.innerHTML = '<i class="fas fa-music"></i>';
-        } else {
-            bgMusic.play();
-            musicBtn.classList.add('playing');
-            musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
-        }
-        isPlaying = !isPlaying;
-    });
+        <!-- Frase -->
+        <p class="quote">
+            "Dios hizo posible que nos encontráramos y decidió unir nuestra historia para compartirla el resto de nuestras vidas."
+        </p>
 
-    // CONTADOR REGRESIVO (10 DE NOVIEMBRE DE 2026, 3:00 PM)
-    const targetDate = new Date('November 10, 2026 15:00:00').getTime();
+        <!-- Mensaje -->
+        <p class="invitation-text">
+            Con el corazón lleno de alegría, nos encantaría que nos acompañes a celebrar este día tan especial.
+        </p>
 
-    function updateCountdown() {
-        const now = new Date().getTime();
-        const difference = targetDate - now;
+        <!-- Bloque de Detalle -->
+        <div class="card-info">
+            <div class="info-item">
+                <span class="info-label">📅 Fecha</span>
+                <span class="info-value">10 de noviembre de 2026</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">🕒 Hora</span>
+                <span class="info-value">3:00 p.m.</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">📍 Lugar</span>
+                <span class="info-value">Calle 97 # 73B - 34, Piso 3</span>
+            </div>
+            
+            <!-- Botón para ver mapa -->
+            <button id="btnMap" class="btn btn-outline">
+                Ver Ubicación en Mapa
+            </button>
+        </div>
 
-        if (difference > 0) {
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+        <!-- Nota de Cupo / Invitación personal -->
+        <div class="notice-box">
+            Debido a que deseamos compartir este momento en un círculo muy estrecho, el cupo y la invitación son estrictamente personales y válidos únicamente para las personas mencionadas.
+        </div>
 
-            document.getElementById('days').innerText = days < 10 ? '0' + days : days;
-            document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
-            document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
-            document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
-        } else {
-            document.getElementById('timer').innerHTML = "<h3>¡Llegó el Gran Día!</h3>";
-        }
-    }
+        <!-- Regalos -->
+        <p class="invitation-text gift-text">
+            Tu presencia es lo más importante; si deseas obsequiarnos algo, lo que tu corazón elija será bienvenido con mucho cariño.
+        </p>
 
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+        <!-- Botón de Confirmación por WhatsApp -->
+        <button id="btnRsvp" class="btn">
+            Confirmar Asistencia
+        </button>
 
-    // ANIMACIÓN AL DESLIZAR
-    const fadeElements = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.15 });
+        <!-- Nota final -->
+        <p class="footer-note">
+            Gracias por acompañarnos en nuestro día tan especial.<br>
+            <strong>Celebración solo para adultos</strong> <span class="toast-icon">🥂✨</span>
+        </p>
+    </div>
 
-    fadeElements.forEach(el => observer.observe(el));
-});
+    <!-- Archivo de JavaScript Externo -->
+    <script src="script.js"></script>
+</body>
+</html>
