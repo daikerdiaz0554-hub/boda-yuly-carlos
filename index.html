@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitación de Boda - Yuly & Carlos</title>
 
-    <!-- Fuentes elegantes de Google Fonts -->
+    <!-- Fuentes de Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
     </button>
     <audio id="bg-music" src="musica.mp3" loop></audio>
 
-    <!-- PANTALLA DE BIENVENIDA (MARCO A PANTALLA COMPLETA) -->
+    <!-- PANTALLA DE BIENVENIDA CON MARCO A PANTALLA COMPLETA -->
     <div id="welcome-screen">
         <div class="welcome-content">
             <p class="sub-title"><i class="fas fa-heart gold-heart"></i> ESTÁS INVITADO A NUESTRA BODA <i class="fas fa-heart gold-heart"></i></p>
@@ -35,29 +35,31 @@
         </div>
     </div>
 
-    <!-- CONTENIDO PRINCIPAL DE LA INVITACIÓN -->
+    <!-- CONTENIDO PRINCIPAL -->
     <div class="main-content">
 
-        <!-- FRASE SOLICITADA EN DORADO Y GRANDE -->
+        <!-- TÍTULO EN DORADO -->
         <h2 class="main-title-gold">¡Nos casamos!</h2>
 
-        <div class="couple-names">Yuly & Carlos</div>
-        <p class="love-subtitle"><i class="fas fa-heart gold-heart"></i> NUESTRA BODA <i class="fas fa-heart gold-heart"></i></p>
+        <div class="couple-names">Yuly & Carlos ❤️</div>
 
-        <!-- FOTO DE LOS NOVIOS EN SU MARCO -->
+        <!-- FOTO DE LOS NOVIOS -->
         <div class="photo-frame">
             <img src="novios.jpg" alt="Yuly & Carlos">
         </div>
 
-        <!-- MANTENEMOS TODO EL CONTENIDO ORIGINAL -->
+        <!-- TEXTO EXACTO -->
         <p class="spiritual-text">
-            "El amor es paciente, es bondadoso. El amor nunca deja de ser."<br>
-            Con la bendición de Dios y de nuestros padres, nos complace invitarte a celebrar la unión de nuestras vidas.
+            Dios hizo posible que nos encontráramos y decidió unir nuestra historia para compartirla el resto de nuestras vidas.<br><br>
+            Con el corazón lleno de alegría, nos encantaría que nos acompañes a celebrar este día tan especial.
         </p>
 
-        <h3 class="date-phrase">10 de Noviembre, 2026</h3>
+        <!-- FECHA, HORA Y LUGAR EXACTOS -->
+        <p class="date-phrase">📅 Fecha: 10 de noviembre de 2026</p>
+        <p class="spiritual-text" style="margin: 5px 0;">🕒 Hora: 3:00 p.m.</p>
+        <p class="spiritual-text" style="margin: 5px 0 20px 0;">📍 Lugar: Calle 97 # 73B - 34, Piso 3</p>
 
-        <!-- CONTADOR REGRESIVO -->
+        <!-- CONTADOR REGRESIVO (Usa tu mismo script.js) -->
         <div id="timer">
             <div class="time-box">
                 <span id="days">00</span>
@@ -77,30 +79,32 @@
             </div>
         </div>
 
-        <!-- SECCIONES DE INFORMACIÓN -->
-        <div class="dresscode-card">
-            <i class="fas fa-user-tie dresscode-icon"></i>
-            <h4>Código de Vestimenta</h4>
-            <p>Formal / Elegante</p>
-        </div>
-
-        <div class="adults-card">
-            <i class="fas fa-glass-cheers icon-adults"></i>
-            <h4>Recepción</h4>
-            <p>Lugar por confirmar</p>
+        <!-- TARJETAS DE INFORMACIÓN TAL CUAL EL TEXTO -->
+        <div class="gift-card">
+            <p class="spiritual-text" style="margin:0;">
+                Debido a que deseamos compartir este momento en un círculo muy estrecho, el cupo y la invitación son estrictamente personales y válidos únicamente para las personas mencionadas.
+            </p>
         </div>
 
         <div class="gift-card">
-            <i class="fas fa-gift gift-icon"></i>
-            <h4>Lluvia de Sobres</h4>
-            <p>Su presencia es nuestro mejor regalo. Si desean hacernos un obsequio, dispondremos de buzón de sobres el día del evento.</p>
+            <p class="spiritual-text" style="margin:0;">
+                Tu presencia es lo más importante; si deseas obsequiarnos algo, lo que tu corazón elija será bienvenido con mucho cariño.
+            </p>
         </div>
 
-        <a href="https://wa.me/573019331094?text=%C2%A1Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Yuly%20y%20Carlos." target="_blank" class="btn btn-whatsapp">
-    <i class="fab fa-whatsapp"></i> Confirmar Asistencia
-</a>
+        <div class="gift-card">
+            <p class="spiritual-text" style="margin:0;">
+                Gracias por acompañarnos en nuestro día tan especial, una celebración que será solo para adultos (con la excepción de los pequeños de la casa). 🥂✨
+            </p>
+        </div>
 
-        <a href="https://maps.google.com" target="_blank" class="btn btn-maps">
+        <!-- BOTONES DE ACCIÓN -->
+        <!-- Recuerda cambiar el número después de wa.me/ con el indicativo 57 -->
+        <a href="https://wa.me/573000000000?text=%C2%A1Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Yuly%20y%20Carlos." target="_blank" class="btn btn-whatsapp">
+            <i class="fab fa-whatsapp"></i> Confirmar Asistencia
+        </a>
+
+        <a href="https://maps.google.com/?q=Calle+97+%23+73B+-+34,+Piso+3" target="_blank" class="btn btn-maps">
             <i class="fas fa-map-marker-alt"></i> Ver Ubicación
         </a>
 
