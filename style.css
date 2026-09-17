@@ -1,248 +1,202 @@
-/* CONFIGURACIÓN GENERAL */
+:root {
+    --gold-primary: #C5A059;
+    --gold-light: #E5C887;
+    --gold-dark: #8C6D2D;
+    --bg-beige: #FDFBF7;
+    --bg-card: #F7F3EB;
+    --text-dark: #3A3532;
+    --text-muted: #6B6560;
+}
+
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
 }
 
 body {
-    background-color: #fdfbf7;
-    color: #333333;
+    background-color: var(--bg-beige);
+    color: var(--text-dark);
+    font-family: 'Montserrat', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    overflow-x: hidden;
+    padding: 20px 15px;
 }
 
-/* PANTALLA DE BIENVENIDA */
-#welcome-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #fdfbf7;
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.container {
+    max-width: 480px;
+    width: 100%;
+    background: var(--bg-beige);
+    border: 2px solid var(--gold-light);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
+    padding: 35px 22px;
     text-align: center;
-    transition: opacity 0.8s ease, visibility 0.8s ease;
-}
-
-#welcome-screen.opened {
+    position: relative;
+    overflow: hidden;
     opacity: 0;
-    visibility: hidden;
+    transform: translateY(15px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.container.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Detalle decorativo dorado */
+.container::before {
+    content: "";
+    position: absolute;
+    top: 10px; left: 10px; right: 10px; bottom: 10px;
+    border: 1px solid var(--gold-primary);
+    border-radius: 12px;
     pointer-events: none;
+    opacity: 0.5;
 }
 
-.welcome-content {
-    padding: 20px;
-    z-index: 2;
+.header-title {
+    font-family: 'Alex Brush', cursive;
+    font-size: 2.6rem;
+    color: var(--gold-primary);
+    margin-bottom: 5px;
 }
 
-.welcome-content .sub-title {
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    color: #666666;
-    margin-bottom: 10px;
-}
-
-.welcome-content h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 3.2rem;
-    color: #a38146;
-    margin: 10px 0 20px 0;
-}
-
-.welcome-content .instruction {
-    font-size: 0.9rem;
-    color: #888888;
+.names {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    letter-spacing: 1px;
     margin-bottom: 15px;
 }
 
-#open-btn {
-    background-color: #d4af37;
-    color: white;
-    border: none;
-    padding: 12px 28px;
-    font-size: 1rem;
-    border-radius: 25px;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-    transition: transform 0.2s;
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0;
+    color: var(--gold-primary);
 }
 
-#open-btn:active {
-    transform: scale(0.95);
+.divider::before, .divider::after {
+    content: "";
+    height: 1px;
+    width: 50px;
+    background: linear-gradient(to right, transparent, var(--gold-primary), transparent);
+    margin: 0 10px;
 }
 
-/* FLORES EN LAS ESQUINAS */
-.floral {
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    background-image: url('https://png.pngtree.com/png-clipart/20220909/ourmid/pngtree-watercolor-blue-flower-corner-wedding-invitation-frame-png-image_6143491.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.floral-top-left {
-    top: 0;
-    left: 0;
-}
-
-.floral-top-right {
-    top: 0;
-    right: 0;
-    transform: scaleX(-1);
-}
-
-.floral-bottom-left {
-    bottom: 0;
-    left: 0;
-    transform: scaleY(-1);
-}
-
-.floral-bottom-right {
-    bottom: 0;
-    right: 0;
-    transform: scale(-1);
-}
-
-/* CONTENEDOR PRINCIPAL */
-.main-content {
-    width: 100%;
-    max-width: 480px;
-    padding: 20px;
-    text-align: center;
-    margin: 0 auto;
-}
-
-/* FOTO DE LOS NOVIOS Y BORDES */
-.photo-frame {
-    width: 100%;
-    max-width: 320px;
-    margin: 20px auto;
-    border: 2px solid #d4af37;
-    border-radius: 15px;
-    padding: 8px;
-    background: #ffffff;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-.photo-frame img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    display: block;
-}
-
-/* CORAZONES DORADOS */
-.gold-heart {
-    color: #d4af37 !important;
-    font-size: 0.9em;
-    margin: 0 4px;
-}
-
-/* TEXTO ESPIRITUAL BAJO LA FOTO */
-.spiritual-text {
-    font-size: 0.92rem;
-    line-height: 1.6;
-    color: #555555;
+.quote {
+    font-family: 'Playfair Display', serif;
     font-style: italic;
-    margin: 20px 0;
-    padding: 0 10px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 20px 10px;
 }
 
-.couple-names {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2.5rem;
-    color: #333333;
-    margin-top: 10px;
-}
-
-.love-subtitle {
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    color: #777777;
-    font-weight: 600;
+.invitation-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text-dark);
     margin-bottom: 25px;
 }
 
-.date-phrase {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2rem;
-    color: #a38146;
-    margin: 15px 0;
+.gift-text {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
 }
 
-/* CONTADOR REGRESIVO */
-#timer {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+.card-info {
+    background-color: var(--bg-card);
+    border: 1px dashed var(--gold-primary);
+    border-radius: 12px;
+    padding: 20px;
     margin: 20px 0;
 }
 
-.time-box {
-    background: #ffffff;
-    border: 1px solid #e2d1a6;
-    border-radius: 10px;
-    padding: 10px;
-    min-width: 65px;
+.info-item {
+    margin-bottom: 12px;
 }
 
-.time-box span {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: #a38146;
+.info-item:last-child {
+    margin-bottom: 0;
 }
 
-.time-box p {
-    font-size: 0.75rem;
-    color: #666666;
-}
-
-/* BOTONES */
-.btn {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 8px;
-    text-decoration: none;
+.info-label {
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 4px;
 }
 
-.btn-whatsapp {
-    background-color: #d4af37;
+.info-value {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.btn {
+    display: inline-block;
+    width: 100%;
+    padding: 13px 20px;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
     color: white;
-}
-
-.btn-maps {
-    background-color: transparent;
-    color: #666666;
-    border: 1px solid #cccccc;
-}
-
-/* BOTÓN FLOTANTE MÚSICA */
-.music-floating {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    background: #d4af37;
-    color: white;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(197, 160, 89, 0.3);
+    transition: all 0.3s ease;
+    margin-top: 10px;
     border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(197, 160, 89, 0.4);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--gold-dark);
+    border: 1px solid var(--gold-primary);
+    box-shadow: none;
+    margin-top: 15px;
+}
+
+.btn-outline:hover {
+    background-color: rgba(197, 160, 89, 0.1);
+}
+
+.notice-box {
+    background-color: rgba(197, 160, 89, 0.08);
+    border-left: 3px solid var(--gold-primary);
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.footer-note {
+    font-size: 0.85rem;
+    color: var(--gold-dark);
+    font-weight: 500;
+    margin-top: 20px;
+    line-height: 1.5;
+}
+
+.toast-icon {
+    font-size: 1.1rem;
 }
