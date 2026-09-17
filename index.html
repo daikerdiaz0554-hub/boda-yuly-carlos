@@ -9,12 +9,35 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
-    <!-- Archivo de Estilos Externo -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container fade-in">
+    <!-- PORTADA / PANTALLA INICIAL INTERACTIVA -->
+    <div id="welcomeOverlay" class="welcome-overlay">
+        <div class="welcome-card">
+            <div class="header-title">Nuestra Boda</div>
+            <div class="names" style="font-size: 2.5rem;">Yuly & Carlos</div>
+            <div class="divider">✦</div>
+            <p class="welcome-subtext">Te invitamos a compartir este día tan especial con nosotros.</p>
+            <button id="btnOpenInvitation" class="btn btn-open">
+                ✨ Toca para abrir la invitación ✨
+            </button>
+        </div>
+    </div>
+
+    <!-- REPRODUCTOR DE MÚSICA -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- BOTÓN FLOTANTE MÚSICA -->
+    <button id="btnMusicToggle" class="music-toggle-btn hidden" title="Pausar / Reproducir Música">
+        🎵
+    </button>
+
+    <!-- CONTENIDO PRINCIPAL DE LA INVITACIÓN -->
+    <div class="container">
         <!-- Encabezado -->
         <div class="header-title">¡Nos casamos!</div>
         <div class="names">Yuly & Carlos</div>
@@ -34,15 +57,15 @@
         <!-- Bloque de Detalle -->
         <div class="card-info">
             <div class="info-item">
-                <span class="info-label">📅 Fecha</span>
+                <span class="info-label">📅 FECHA</span>
                 <span class="info-value">10 de noviembre de 2026</span>
             </div>
             <div class="info-item">
-                <span class="info-label">🕒 Hora</span>
+                <span class="info-label">🕒 HORA</span>
                 <span class="info-value">3:00 p.m.</span>
             </div>
             <div class="info-item">
-                <span class="info-label">📍 Lugar</span>
+                <span class="info-label">📍 LUGAR</span>
                 <span class="info-value">Calle 97 # 73B - 34, Piso 3</span>
             </div>
             
@@ -74,7 +97,6 @@
         </p>
     </div>
 
-    <!-- Archivo de JavaScript Externo -->
     <script src="script.js"></script>
 </body>
 </html>
