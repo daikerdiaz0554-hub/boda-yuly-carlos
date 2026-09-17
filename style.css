@@ -3,7 +3,7 @@
     --gold-light: #E5C887;
     --gold-dark: #8C6D2D;
     --bg-beige: #FDFBF7;
-    --bg-card: #F7F3EB;
+    --bg-card: rgba(247, 243, 235, 0.85);
     --text-dark: #3A3532;
     --text-muted: #6B6560;
 }
@@ -23,8 +23,92 @@ body {
     align-items: center;
     min-height: 100vh;
     padding: 20px 15px;
+    position: relative;
 }
 
+/* PORTADA INICIAL CON EL MARCO Y FLORES */
+.welcome-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-beige);
+    background-image: url('marco.jpg'); /* Imagen del marco floral */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    padding: 20px;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.welcome-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.welcome-card {
+    max-width: 380px;
+    width: 100%;
+    background: rgba(253, 251, 247, 0.9); /* Fondo semi-transparente para leer bien */
+    border-radius: 16px;
+    padding: 40px 25px;
+    text-align: center;
+    backdrop-filter: blur(2px);
+}
+
+.welcome-subtext {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: 15px 0 25px 0;
+    line-height: 1.5;
+}
+
+.btn-open {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+/* BOTÓN MÚSICA FLOTANTE */
+.music-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+    color: white;
+    border: 2px solid white;
+    font-size: 1.3rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.music-toggle-btn.hidden {
+    display: none;
+}
+
+.music-toggle-btn:hover {
+    transform: scale(1.1);
+}
+
+/* CONTENEDOR PRINCIPAL DE LA INVITACIÓN */
 .container {
     max-width: 480px;
     width: 100%;
@@ -36,17 +120,8 @@ body {
     text-align: center;
     position: relative;
     overflow: hidden;
-    opacity: 0;
-    transform: translateY(15px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.container.fade-in {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Detalle decorativo dorado */
 .container::before {
     content: "";
     position: absolute;
