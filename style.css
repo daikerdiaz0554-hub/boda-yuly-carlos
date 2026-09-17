@@ -16,7 +16,7 @@ body {
     overflow-x: hidden;
 }
 
-/* PANTALLA DE BIENVENIDA (MARCO A PANTALLA COMPLETA SIN BORDES BLANCOS) */
+/* PANTALLA DE BIENVENIDA A PANTALLA COMPLETA */
 #welcome-screen {
     position: fixed;
     top: 0;
@@ -25,7 +25,7 @@ body {
     height: 100vh;
     background-color: #fdfbf7;
     background-image: url('marco.jpg');
-    background-size: cover; /* Cubre absolutamente toda la pantalla */
+    background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     z-index: 9999;
@@ -97,17 +97,15 @@ body {
     margin: 0 auto;
 }
 
-/* TÍTULO DORADO "NOS CASAMOS" */
+/* TÍTULOS Y NOMBRES */
 .main-title-gold {
     font-family: 'Great Vibes', cursive;
     font-size: 3.5rem;
     color: #a38146;
     margin-top: 15px;
     margin-bottom: 5px;
-    text-shadow: 0px 1px 2px rgba(0,0,0,0.05);
 }
 
-/* NOMBRES Y SUBTÍTULO */
 .couple-names {
     font-family: 'Great Vibes', cursive;
     font-size: 2.5rem;
@@ -115,15 +113,7 @@ body {
     margin-top: 5px;
 }
 
-.love-subtitle {
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    color: #777777;
-    font-weight: 600;
-    margin-bottom: 25px;
-}
-
-/* MARCO Y TAMAÑO DE LA FOTO */
+/* MARCO Y FOTO DE LOS NOVIOS */
 .photo-frame {
     width: 100%;
     max-width: 300px;
@@ -144,20 +134,26 @@ body {
     display: block;
 }
 
-/* CORAZONES DORADOS */
+/* DETALLES Y DECORACIONES DORADAS */
 .gold-heart {
     color: #d4af37 !important;
     font-size: 0.9em;
     margin: 0 4px;
 }
 
-/* TEXTO ESPIRITUAL Y FRASES */
+.gold-divider {
+    color: #d4af37;
+    font-size: 1.2rem;
+    margin: 18px 0;
+}
+
+/* TEXTOS LIBRES */
 .spiritual-text {
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     line-height: 1.6;
-    color: #555555;
+    color: #444444;
     font-style: italic;
-    margin: 20px 0;
+    margin: 15px 0;
     padding: 0 10px;
 }
 
@@ -165,7 +161,7 @@ body {
     font-family: 'Great Vibes', cursive;
     font-size: 2rem;
     color: #a38146;
-    margin: 15px 0;
+    margin: 15px 0 5px 0;
 }
 
 /* CONTADOR REGRESIVO */
@@ -193,22 +189,6 @@ body {
 .time-box p {
     font-size: 0.75rem;
     color: #666666;
-}
-
-/* TARJETAS SECCIONALES (REGALOS, VESTIMENTA, ADULTOS) */
-.gift-card, .dresscode-card, .adults-card {
-    background: #ffffff;
-    border: 1px solid #e2d1a6;
-    border-radius: 12px;
-    padding: 18px 15px;
-    margin: 15px 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-}
-
-.gift-icon, .dresscode-icon, .icon-adults {
-    font-size: 1.5rem;
-    color: #a38146;
-    margin-bottom: 8px;
 }
 
 /* BOTONES DE ACCIÓN */
