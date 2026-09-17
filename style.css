@@ -1,4 +1,5 @@
-/* CONFIGURACIÓN GENERAL */
+
+ /* CONFIGURACIÓN GENERAL */
 * {
     margin: 0;
     padding: 0;
@@ -16,7 +17,7 @@ body {
     overflow-x: hidden;
 }
 
-/* PANTALLA DE BIENVENIDA */
+/* PANTALLA DE BIENVENIDA CON MARCO COMPLETO */
 #welcome-screen {
     position: fixed;
     top: 0;
@@ -24,6 +25,10 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: #fdfbf7;
+    background-image: url('marco.jpg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     z-index: 9999;
     display: flex;
     flex-direction: column;
@@ -80,39 +85,8 @@ body {
     transform: scale(0.95);
 }
 
-/* FLORES DE TU ARCHIVO 'marco.jpg' EN LAS ESQUINAS */
 .floral {
-    position: absolute;
-    width: 130px;
-    height: 130px;
-    background-image: url('marco.jpg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.floral-top-left {
-    top: 0;
-    left: 0;
-}
-
-.floral-top-right {
-    top: 0;
-    right: 0;
-    transform: scaleX(-1);
-}
-
-.floral-bottom-left {
-    bottom: 0;
-    left: 0;
-    transform: scaleY(-1);
-}
-
-.floral-bottom-right {
-    bottom: 0;
-    right: 0;
-    transform: scale(-1);
+    display: none;
 }
 
 /* CONTENEDOR PRINCIPAL */
