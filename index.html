@@ -13,12 +13,16 @@
 </head>
 <body>
 
-    <!-- PORTADA / PANTALLA INICIAL INTERACTIVA -->
+    <!-- PORTADA / PANTALLA INICIAL INTERACTIVA CON MARCO FLORAL -->
     <div id="welcomeOverlay" class="welcome-overlay">
         <div class="welcome-card">
             <div class="header-title">Nuestra Boda</div>
-            <div class="names" style="font-size: 2.5rem;">Yuly & Carlos</div>
-            <div class="divider">✦</div>
+            <div class="names-decorated">
+                <span class="heart-icon">🕊️</span>
+                <span class="names-text">Yuly & Carlos</span>
+                <span class="heart-icon">🕊️</span>
+            </div>
+            <div class="divider">✦ 🌿 ✦</div>
             <p class="welcome-subtext">Te invitamos a compartir este día tan especial con nosotros.</p>
             <button id="btnOpenInvitation" class="btn btn-open">
                 ✨ Toca para abrir la invitación ✨
@@ -38,11 +42,18 @@
 
     <!-- CONTENIDO PRINCIPAL DE LA INVITACIÓN -->
     <div class="container">
+        <!-- Adornos Florales de fondo en el contenido -->
+        <div class="card-floral-top">🌸🌿</div>
+        
         <!-- Encabezado -->
         <div class="header-title">¡Nos casamos!</div>
-        <div class="names">Yuly & Carlos</div>
+        <div class="names-decorated">
+            <span class="heart-icon">✨</span>
+            <span class="names-text">Yuly & Carlos</span>
+            <span class="heart-icon">✨</span>
+        </div>
 
-        <div class="divider">✦</div>
+        <div class="divider">🕊️ ✦ 🕊️</div>
 
         <!-- Frase -->
         <p class="quote">
@@ -71,23 +82,23 @@
             
             <!-- Botón para ver mapa -->
             <button id="btnMap" class="btn btn-outline">
-                Ver Ubicación en Mapa
+                📍 Ver Ubicación en Mapa
             </button>
         </div>
 
         <!-- Nota de Cupo / Invitación personal -->
         <div class="notice-box">
-            Debido a que deseamos compartir este momento en un círculo muy estrecho, el cupo y la invitación son estrictamente personales y válidos únicamente para las personas mencionadas.
+            💌 <strong>Nota importante:</strong> Debido a que deseamos compartir este momento en un círculo muy estrecho, el cupo y la invitación son estrictamente personales y válidos únicamente para las personas mencionadas.
         </div>
 
         <!-- Regalos -->
         <p class="invitation-text gift-text">
-            Tu presencia es lo más importante; si deseas obsequiarnos algo, lo que tu corazón elija será bienvenido con mucho cariño.
+            🎁 Tu presencia es lo más importante; si deseas obsequiarnos algo, lo que tu corazón elija será bienvenido con mucho cariño.
         </p>
 
         <!-- Botón de Confirmación por WhatsApp -->
         <button id="btnRsvp" class="btn">
-            Confirmar Asistencia
+            💬 Confirmar Asistencia por WhatsApp
         </button>
 
         <!-- Nota final -->
@@ -95,6 +106,8 @@
             Gracias por acompañarnos en nuestro día tan especial.<br>
             <strong>Celebración solo para adultos</strong> <span class="toast-icon">🥂✨</span>
         </p>
+        
+        <div class="card-floral-bottom">🌿🌸</div>
     </div>
 
     <script src="script.js"></script>
