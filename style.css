@@ -1,5 +1,4 @@
-
- /* CONFIGURACIÓN GENERAL */
+/* CONFIGURACIÓN GENERAL */
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +16,7 @@ body {
     overflow-x: hidden;
 }
 
-/* PANTALLA DE BIENVENIDA CON MARCO COMPLETO */
+/* PANTALLA DE BIENVENIDA (MARCO A PANTALLA COMPLETA SIN BORDES BLANCOS) */
 #welcome-screen {
     position: fixed;
     top: 0;
@@ -26,8 +25,8 @@ body {
     height: 100vh;
     background-color: #fdfbf7;
     background-image: url('marco.jpg');
-    background-size: contain;
-    background-position: center;
+    background-size: cover; /* Cubre absolutamente toda la pantalla */
+    background-position: center center;
     background-repeat: no-repeat;
     z-index: 9999;
     display: flex;
@@ -93,12 +92,38 @@ body {
 .main-content {
     width: 100%;
     max-width: 480px;
-    padding: 20px;
+    padding: 25px 20px;
     text-align: center;
     margin: 0 auto;
 }
 
-/* MARCO Y TAMAÑO DE LA FOTO EN EL SEGUNDO APARTADO */
+/* TÍTULO DORADO "NOS CASAMOS" */
+.main-title-gold {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5rem;
+    color: #a38146;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    text-shadow: 0px 1px 2px rgba(0,0,0,0.05);
+}
+
+/* NOMBRES Y SUBTÍTULO */
+.couple-names {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    color: #333333;
+    margin-top: 5px;
+}
+
+.love-subtitle {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: #777777;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+/* MARCO Y TAMAÑO DE LA FOTO */
 .photo-frame {
     width: 100%;
     max-width: 300px;
@@ -134,21 +159,6 @@ body {
     font-style: italic;
     margin: 20px 0;
     padding: 0 10px;
-}
-
-.couple-names {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2.5rem;
-    color: #333333;
-    margin-top: 10px;
-}
-
-.love-subtitle {
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    color: #777777;
-    font-weight: 600;
-    margin-bottom: 25px;
 }
 
 .date-phrase {
