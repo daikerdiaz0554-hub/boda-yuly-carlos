@@ -3,7 +3,7 @@
     --gold-light: #E5C887;
     --gold-dark: #8C6D2D;
     --bg-beige: #FDFBF7;
-    --bg-card: rgba(247, 243, 235, 0.85);
+    --bg-card: rgba(247, 243, 235, 0.95);
     --text-dark: #3A3532;
     --text-muted: #6B6560;
 }
@@ -26,24 +26,21 @@ body {
     position: relative;
 }
 
-/* PORTADA INICIAL CON EL MARCO Y FLORES */
+/* PORTADA INICIAL DE APERTURA CON MARCO FLORAL */
 .welcome-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: var(--bg-beige);
-    background-image: url('marco.jpg'); /* Imagen del marco floral */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 999;
     padding: 20px;
     transition: opacity 0.8s ease, visibility 0.8s ease;
+    overflow: hidden;
 }
 
 .welcome-overlay.hidden {
@@ -52,18 +49,44 @@ body {
     pointer-events: none;
 }
 
+.welcome-overlay::before {
+    content: "";
+    position: absolute;
+    top: 15px; left: 15px; right: 15px; bottom: 15px;
+    border: 2px solid var(--gold-primary);
+    border-radius: 12px;
+    pointer-events: none;
+    box-shadow: inset 0 0 0 3px rgba(197, 160, 89, 0.2);
+}
+
+.welcome-overlay::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: 
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 100 100"><circle cx="25" cy="25" r="18" fill="%23E8A0BF" opacity="0.8"/><circle cx="20" cy="20" r="12" fill="%23F4C7AB" opacity="0.9"/><circle cx="45" cy="18" r="10" fill="%23D8B4F8" opacity="0.6"/><path d="M10 40 Q 25 35 35 50 Q 15 45 10 40 Z" fill="%2385A98F"/><path d="M40 10 Q 35 25 50 35 Q 45 15 40 10 Z" fill="%2385A98F"/></svg>'),
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 100 100"><circle cx="75" cy="75" r="18" fill="%23E8A0BF" opacity="0.8"/><circle cx="80" cy="80" r="12" fill="%23F4C7AB" opacity="0.9"/><circle cx="55" cy="82" r="10" fill="%23D8B4F8" opacity="0.6"/><path d="M90 60 Q 75 65 65 50 Q 85 55 90 60 Z" fill="%2385A98F"/><path d="M60 90 Q 65 75 50 65 Q 55 85 60 90 Z" fill="%2385A98F"/></svg>');
+    background-position: top left, bottom right;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    opacity: 0.85;
+}
+
 .welcome-card {
-    max-width: 380px;
+    max-width: 360px;
     width: 100%;
-    background: rgba(253, 251, 247, 0.9); /* Fondo semi-transparente para leer bien */
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid var(--gold-light);
     border-radius: 16px;
-    padding: 40px 25px;
+    padding: 35px 20px;
     text-align: center;
-    backdrop-filter: blur(2px);
+    box-shadow: 0 10px 25px rgba(197, 160, 89, 0.15);
+    z-index: 2;
+    position: relative;
 }
 
 .welcome-subtext {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: var(--text-muted);
     margin: 15px 0 25px 0;
     line-height: 1.5;
@@ -77,6 +100,34 @@ body {
     0% { transform: scale(1); }
     50% { transform: scale(1.03); }
     100% { transform: scale(1); }
+}
+
+/* DECORACIÓN DE NOMBRES ANIMADA */
+.names-decorated {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.names-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    letter-spacing: 1px;
+}
+
+.heart-icon {
+    font-size: 1.2rem;
+    color: var(--gold-primary);
+    animation: floatHeart 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes floatHeart {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-4px) scale(1.15); }
 }
 
 /* BOTÓN MÚSICA FLOTANTE */
@@ -114,8 +165,8 @@ body {
     width: 100%;
     background: var(--bg-beige);
     border: 2px solid var(--gold-light);
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(197, 160, 89, 0.2);
     padding: 35px 22px;
     text-align: center;
     position: relative;
@@ -126,26 +177,22 @@ body {
     content: "";
     position: absolute;
     top: 10px; left: 10px; right: 10px; bottom: 10px;
-    border: 1px solid var(--gold-primary);
-    border-radius: 12px;
+    border: 1px dashed var(--gold-primary);
+    border-radius: 15px;
     pointer-events: none;
-    opacity: 0.5;
+    opacity: 0.6;
+}
+
+.card-floral-top, .card-floral-bottom {
+    font-size: 1.5rem;
+    margin: 5px 0;
 }
 
 .header-title {
     font-family: 'Alex Brush', cursive;
-    font-size: 2.6rem;
+    font-size: 2.8rem;
     color: var(--gold-primary);
     margin-bottom: 5px;
-}
-
-.names {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    font-weight: 600;
-    color: var(--text-dark);
-    letter-spacing: 1px;
-    margin-bottom: 15px;
 }
 
 .divider {
@@ -154,14 +201,8 @@ body {
     justify-content: center;
     margin: 15px 0;
     color: var(--gold-primary);
-}
-
-.divider::before, .divider::after {
-    content: "";
-    height: 1px;
-    width: 50px;
-    background: linear-gradient(to right, transparent, var(--gold-primary), transparent);
-    margin: 0 10px;
+    font-size: 0.9rem;
+    gap: 8px;
 }
 
 .quote {
@@ -171,31 +212,36 @@ body {
     color: var(--text-muted);
     line-height: 1.6;
     margin: 20px 10px;
+    background: rgba(229, 200, 135, 0.12);
+    padding: 12px 15px;
+    border-radius: 12px;
+    border-left: 3px solid var(--gold-primary);
 }
 
 .invitation-text {
-    font-size: 0.9rem;
-    line-height: 1.5;
+    font-size: 0.92rem;
+    line-height: 1.6;
     color: var(--text-dark);
     margin-bottom: 25px;
 }
 
 .gift-text {
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     color: var(--text-muted);
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
 .card-info {
     background-color: var(--bg-card);
-    border: 1px dashed var(--gold-primary);
-    border-radius: 12px;
-    padding: 20px;
-    margin: 20px 0;
+    border: 1px solid var(--gold-light);
+    border-radius: 14px;
+    padding: 22px 18px;
+    margin: 22px 0;
+    box-shadow: inset 0 0 10px rgba(197, 160, 89, 0.05);
 }
 
 .info-item {
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
 .info-item:last-child {
@@ -213,21 +259,21 @@ body {
 }
 
 .info-value {
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 500;
 }
 
 .btn {
     display: inline-block;
     width: 100%;
-    padding: 13px 20px;
+    padding: 14px 20px;
     background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
     color: white;
     border-radius: 25px;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     letter-spacing: 0.5px;
-    box-shadow: 0 4px 12px rgba(197, 160, 89, 0.3);
+    box-shadow: 0 4px 14px rgba(197, 160, 89, 0.35);
     transition: all 0.3s ease;
     margin-top: 10px;
     border: none;
@@ -237,39 +283,39 @@ body {
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(197, 160, 89, 0.4);
+    box-shadow: 0 6px 18px rgba(197, 160, 89, 0.45);
 }
 
 .btn-outline {
     background: transparent;
     color: var(--gold-dark);
-    border: 1px solid var(--gold-primary);
+    border: 1.5px solid var(--gold-primary);
     box-shadow: none;
     margin-top: 15px;
 }
 
 .btn-outline:hover {
-    background-color: rgba(197, 160, 89, 0.1);
+    background-color: rgba(197, 160, 89, 0.12);
 }
 
 .notice-box {
-    background-color: rgba(197, 160, 89, 0.08);
+    background-color: rgba(197, 160, 89, 0.1);
     border-left: 3px solid var(--gold-primary);
-    padding: 12px 15px;
+    padding: 14px 16px;
     text-align: left;
-    font-size: 0.82rem;
-    color: var(--text-muted);
+    font-size: 0.85rem;
+    color: var(--text-dark);
     line-height: 1.5;
-    margin: 20px 0;
-    border-radius: 0 8px 8px 0;
+    margin: 22px 0;
+    border-radius: 0 10px 10px 0;
 }
 
 .footer-note {
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     color: var(--gold-dark);
     font-weight: 500;
     margin-top: 20px;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .toast-icon {
