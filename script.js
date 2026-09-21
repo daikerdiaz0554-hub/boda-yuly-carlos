@@ -7,6 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (openBtn && welcomeScreen) {
         openBtn.addEventListener("click", () => {
             welcomeScreen.classList.add("opened");
+            setTimeout(() => {
+                welcomeScreen.style.display = "none";
+            }, 800);
+
             if (bgMusic) {
                 bgMusic.play().then(() => {
                     if (musicBtn) musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
@@ -29,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // FECHA Y HORA CONFIGURADAS A LAS 6:00 P.M. (18:00:00)
+    // CONTADOR CONFIGURADO A LAS 6:00 P.M. (18:00:00)
     const targetDate = new Date("November 10, 2026 18:00:00").getTime();
 
     function updateCountdown() {
