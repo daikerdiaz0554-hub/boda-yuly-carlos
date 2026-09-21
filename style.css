@@ -1,59 +1,230 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const welcomeScreen = document.getElementById("welcome-screen");
-    const openBtn = document.getElementById("open-btn");
-    const bgMusic = document.getElementById("bg-music");
-    const musicBtn = document.getElementById("music-btn");
+/* CONFIGURACIÓN GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
 
-    if (openBtn && welcomeScreen) {
-        openBtn.addEventListener("click", () => {
-            welcomeScreen.classList.add("opened");
-            if (bgMusic) {
-                bgMusic.play().then(() => {
-                    if (musicBtn) musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                }).catch((error) => {
-                    console.log("Reproducción automática bloqueada por el navegador:", error);
-                });
-            }
-        });
-    }
+body {
+    background-color: #fdfbf7;
+    color: #333333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
 
-    if (musicBtn && bgMusic) {
-        musicBtn.addEventListener("click", () => {
-            if (bgMusic.paused) {
-                bgMusic.play();
-                musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            } else {
-                bgMusic.pause();
-                musicBtn.innerHTML = '<i class="fas fa-music"></i>';
-            }
-        });
-    }
+/* PANTALLA DE BIENVENIDA A PANTALLA COMPLETA */
+#welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fdfbf7;
+    background-image: url('marco.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
 
-    // FECHA Y HORA CONFIGURADAS A LAS 6:00 P.M. (18:00:00)
-    const targetDate = new Date("November 10, 2026 18:00:00").getTime();
+#welcome-screen.opened {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
 
-    function updateCountdown() {
-        const now = new Date().getTime();
-        const difference = targetDate - now;
+.welcome-content {
+    padding: 20px;
+    z-index: 2;
+}
 
-        if (difference > 0) {
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+.welcome-content .sub-title {
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    color: #666666;
+    margin-bottom: 10px;
+}
 
-            const daysElem = document.getElementById("days");
-            const hoursElem = document.getElementById("hours");
-            const minutesElem = document.getElementById("minutes");
-            const secondsElem = document.getElementById("seconds");
+.welcome-content h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.2rem;
+    color: #a38146;
+    margin: 10px 0 20px 0;
+}
 
-            if (daysElem) daysElem.innerText = days < 10 ? "0" + days : days;
-            if (hoursElem) hoursElem.innerText = hours < 10 ? "0" + hours : hours;
-            if (minutesElem) minutesElem.innerText = minutes < 10 ? "0" + minutes : minutes;
-            if (secondsElem) secondsElem.innerText = seconds < 10 ? "0" + seconds : seconds;
-        }
-    }
+.welcome-content .instruction {
+    font-size: 0.9rem;
+    color: #888888;
+    margin-bottom: 15px;
+}
 
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-});
+#open-btn {
+    background-color: #d4af37;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    font-size: 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    transition: transform 0.2s;
+}
+
+#open-btn:active {
+    transform: scale(0.95);
+}
+
+.floral {
+    display: none;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.main-content {
+    width: 100%;
+    max-width: 480px;
+    padding: 25px 20px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* TÍTULOS Y NOMBRES */
+.main-title-gold {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5rem;
+    color: #a38146;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.couple-names {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    color: #333333;
+    margin-top: 5px;
+}
+
+/* MARCO Y FOTO DE LOS NOVIOS */
+.photo-frame {
+    width: 100%;
+    max-width: 300px;
+    height: 350px;
+    margin: 20px auto;
+    border: 2px solid #d4af37;
+    border-radius: 15px;
+    padding: 6px;
+    background: #ffffff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+}
+
+/* DETALLES Y DECORACIONES DORADAS */
+.gold-heart {
+    color: #d4af37 !important;
+    font-size: 0.9em;
+    margin: 0 4px;
+}
+
+.gold-divider {
+    color: #d4af37;
+    font-size: 1.2rem;
+    margin: 18px 0;
+}
+
+/* TEXTOS LIBRES */
+.spiritual-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #444444;
+    font-style: italic;
+    margin: 15px 0;
+    padding: 0 10px;
+}
+
+.date-phrase {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+    color: #a38146;
+    margin: 15px 0 5px 0;
+}
+
+/* CONTADOR REGRESIVO */
+#timer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.time-box {
+    background: #ffffff;
+    border: 1px solid #e2d1a6;
+    border-radius: 10px;
+    padding: 10px;
+    min-width: 65px;
+}
+
+.time-box span {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #a38146;
+}
+
+.time-box p {
+    font-size: 0.75rem;
+    color: #666666;
+}
+
+/* BOTONES DE ACCIÓN */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.btn-whatsapp {
+    background-color: #d4af37;
+    color: white;
+}
+
+.btn-maps {
+    background-color: transparent;
+    color: #666666;
+    border: 1px solid #cccccc;
+}
+
+/* BOTÓN FLOTANTE MÚSICA */
+.music-floating {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: #d4af37;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
