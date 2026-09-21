@@ -4,13 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const bgMusic = document.getElementById("bg-music");
     const musicBtn = document.getElementById("music-btn");
 
-    // LÓGICA PARA ABRIR LA INVITACIÓN
     if (openBtn && welcomeScreen) {
         openBtn.addEventListener("click", () => {
-            // Oculta la pantalla de bienvenida con animación
             welcomeScreen.classList.add("opened");
-
-            // Reproduce la música de fondo
             if (bgMusic) {
                 bgMusic.play().then(() => {
                     if (musicBtn) musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
@@ -21,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // CONTROL DEL BOTÓN FLOTANTE DE MÚSICA
     if (musicBtn && bgMusic) {
         musicBtn.addEventListener("click", () => {
             if (bgMusic.paused) {
@@ -34,8 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // CONTADOR REGRESIVO PARA EL 10 DE NOVIEMBRE DE 2026 A LAS 3:00 PM
-    const targetDate = new Date("November 10, 2026 15:00:00").getTime();
+    // FECHA Y HORA CONFIGURADAS A LAS 6:00 P.M. (18:00:00)
+    const targetDate = new Date("November 10, 2026 18:00:00").getTime();
 
     function updateCountdown() {
         const now = new Date().getTime();
@@ -59,7 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Actualiza el contador cada segundo
     setInterval(updateCountdown, 1000);
     updateCountdown();
 });
